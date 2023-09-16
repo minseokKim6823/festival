@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>이벤트페이지입니다.</title>
+  <link rel="stylesheet" href="./toggle_btn.css">
+  <!--    <link rel="stylesheet" href="${pageContext.request.contextPath}/toggle_btn.css">-->
+
+</head>
+<body>
+session 값 확인: <p th:text="${session.loginName}"></p>
+
+
+<form id="ticketForm">
+  티켓수 <input type="number" name="ticket"> <br>
+  <input type="submit" value="티켓수 변경">
+</form><br/>
+
+<form action="/api/treasure_toggle" method="post">
+  <input type="hidden" name="value" value="1">
+  <input type="submit" value="box1">
+</form><br/>
+
+<form action="/api/treasure_toggle" method="post">
+  <input type="hidden" name="value" value="2">
+  <input type="submit" value="box2">
+</form><br/>
+
+<form action="/api/treasure_toggle" method="post">
+  <input type="hidden" name="value" value="3">
+  <input type="submit" value="box3">
+</form><br/>
+
+<form action="/api/treasure_toggle" method="post">
+  <input type="hidden" name="value" value="4">
+  <input type="submit" value="box4">
+</form><br/>
+
+
+<script>
+  document.getElementById("ticketForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var form = event.target;
+    var formData = new FormData(form);
+    var ticketValue = formData.get("ticket");
+
+    // 쿼리 문자열로 변환
+    var queryString = ticketValue;
+
+    // 쿼리 문자열을 URL에 추가하여 전송
+    window.location.href = "/admin/festival/api/ticket_change/" + queryString;
+  });
+</script>
+
+</body>
+</html>
+
+
