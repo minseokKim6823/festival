@@ -1,6 +1,6 @@
 package com.admin.festival.controller;
 
-import com.admin.festival.Response.VisitorResponse;
+import com.admin.festival.response.VisitorResponse;
 import com.admin.festival.entity.VisitorEntity;
 import com.admin.festival.repository.VisitorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

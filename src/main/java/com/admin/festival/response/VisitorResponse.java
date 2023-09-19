@@ -1,4 +1,4 @@
-package com.admin.festival.Response;
+package com.admin.festival.response;
 
 public class VisitorResponse {
     private Long count;

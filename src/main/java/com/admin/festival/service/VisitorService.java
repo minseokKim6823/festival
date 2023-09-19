@@ -23,7 +23,7 @@ public class VisitorService {
         countset=countset + 1;
         return visitorEntity.getCount();
     }
-    @Scheduled(fixedRate = 30000)//30초 기준
+    @Scheduled(fixedRate = 900000)//900초 기준
     public void updateDB() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
         visitorEntity.setCount(visitorEntity.getCount() + countset);
