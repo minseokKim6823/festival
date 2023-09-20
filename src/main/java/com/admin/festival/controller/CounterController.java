@@ -19,10 +19,8 @@ public class CounterController {
 
     @GetMapping("/count")
     public VisitorResponse getVisitorCount() {
-        Long visitorId = 1L;
-        VisitorEntity visitorEntity = visitorRepository.findById(visitorId).orElse(new VisitorEntity());
         visitorService.incrementVisitorCount();
-        return new VisitorResponse(visitorEntity.getCount());
+        return new VisitorResponse(visitorService.countset);
     }
 }
 

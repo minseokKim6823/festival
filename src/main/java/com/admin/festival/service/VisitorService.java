@@ -24,8 +24,7 @@ public class VisitorService {
     @Scheduled(fixedRate = 10000)//900초 기준
     public void updateDB() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
-        visitorEntity.setCount(visitorEntity.getCount() + countset);
-        countset =0;
+        visitorEntity.setCount(countset);
         visitorRepository.save(visitorEntity);
     }
     // 9/18 22시 update 끝
