@@ -18,12 +18,10 @@ public class VisitorService {
         return visitorEntity.getCount();
     }
     // 9/18 22시 update 시작
-    public Long incrementVisitorCount() {
-        VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
+    public void incrementVisitorCount() {
         countset=countset + 1;
-        return visitorEntity.getCount();
     }
-    @Scheduled(fixedRate = 900000)//900초 기준
+    @Scheduled(fixedRate = 10000)//900초 기준
     public void updateDB() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
         visitorEntity.setCount(visitorEntity.getCount() + countset);
