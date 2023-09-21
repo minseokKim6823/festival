@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 public class VisitorService {
     @Autowired
     private VisitorRepository visitorRepository;
-    public long countset=0L;// 9/18 22시 update
+    public long countset = 0L;
+   // 9/18 22시 update
     @Cacheable("countset")
     public Long getVisitorCount() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());

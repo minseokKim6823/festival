@@ -10,10 +10,10 @@ public class VisitorController {
     @Autowired
     private VisitorService visitorService;
 
-    @GetMapping("/getCount")
-    public Long getVisitorCount() {
-        return visitorService.getVisitorCount();
-    }
+//    @GetMapping("/getCount")
+//    public Long getVisitorCount() {
+//       return visitorService.getVisitorCount();
+//    }
 
 }
 

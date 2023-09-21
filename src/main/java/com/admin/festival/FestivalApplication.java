@@ -10,6 +10,7 @@ public class FestivalApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FestivalApplication.class, args);
+
 	}
 
 }
