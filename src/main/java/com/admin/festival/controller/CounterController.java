@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/api/visitor")
 public class CounterController {
@@ -16,12 +17,12 @@ public class CounterController {
     private VisitorRepository visitorRepository;
     @Autowired
     private VisitorService visitorService;
-
     @GetMapping("/count")
     public VisitorResponse getVisitorCount() {
+        Long visitorId = 1L;
+        VisitorEntity visitorEntity = visitorRepository.findById(visitorId).orElse(new VisitorEntity());
         visitorService.incrementVisitorCount();
-        return new VisitorResponse(visitorService.countset);
+        return new VisitorResponse(visitorEntity.getCount());
     }
+
 }
-
-

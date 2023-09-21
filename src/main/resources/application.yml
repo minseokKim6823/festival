@@ -25,19 +25,38 @@
 
 
 #h2 db testcode for 민석
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driverClassName: org.h2.Driver
+#    username: sa
+#    password:
+#  h2:
+#    console:
+#      enabled: true
+#  spring:
+#    session:
+#      store-type: jdbc
+
+
+
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/te;
     username: sa
     password:
-  h2:
-    console:
-      enabled: true
-  spring:
-    session:
-      store-type: jdbc
+    driver-class-name: org.h2.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: update  #애플리케이션 실행 시점에 내가 가지고 있는 테이블 지우고 다시 테이블 생성     none은 지워지진X
+    properties:
+      hibernate:
+        #       show_sql: true system out으로 출력
+        format_sql: true
+        default_batch_fetch_size: 100 #인쿼리의 갯수
 
-
-
+logging:
+  level:
+    org.hibernate.SQL: debug #logger로 출력
+#    org.hibernate.type: trace

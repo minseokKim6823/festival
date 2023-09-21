@@ -11,23 +11,24 @@ import org.springframework.stereotype.Service;
 public class VisitorService {
     @Autowired
     private VisitorRepository visitorRepository;
-    public long countset = 0L;
-   // 9/18 22시 update
+    public long countset=0L;// 9/18 22시 update
     @Cacheable("countset")
     public Long getVisitorCount() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
         return visitorEntity.getCount();
     }
     // 9/18 22시 update 시작
-    public void incrementVisitorCount() {
+    public Long incrementVisitorCount() {
+        VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
         countset=countset + 1;
+        return visitorEntity.getCount();
     }
-    @Scheduled(fixedRate = 10000)//900초 기준
+    @Scheduled(fixedRate = 10000)
     public void updateDB() {
         VisitorEntity visitorEntity = visitorRepository.findById(1L).orElse(new VisitorEntity());
-        visitorEntity.setCount(countset);
+        visitorEntity.setCount(visitorEntity.getCount() + countset);
+        countset =0;
         visitorRepository.save(visitorEntity);
     }
     // 9/18 22시 update 끝
 }
-
